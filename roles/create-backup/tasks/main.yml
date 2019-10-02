@@ -1,0 +1,28 @@
+- name: Delete working directory 
+  file:
+    path: '{{ backup_data_path }}'
+    state: absent
+
+- name: Create working directory
+  file:
+    path: '{{ backup_data_path }}'
+    recurse: yes
+    state: directory
+
+- name: Archive Git repositories 
+  archive:
+    path: '{{ git_dir }}'
+    dest: '{{ backup_data_path }}/{{ git_archive_file }}'
+    mode: 0755
+
+- name: Archive Redmine media files 
+  archive:
+    path: "{{ redmine_dir }}/files"
+    dest: '{{ backup_data_path }}/{{ redmine_media_archive_file }}'
+    mode: 0755
+
+- name: Dump Redmine database 
+  environment:
+    PGPASSWORD: '{{ db_password }}'
+  shell:
+    "pg_dump -h localhost -U {{ db_user }} {{ db_name }} > {{ backup_data_path }}/{{ pg_dump_data_file }}"
