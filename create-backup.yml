@@ -1,8 +1,8 @@
 ---
 - hosts: all
-  become: True 
+  become: True
   vars_files:
-    - defaults/main.yml
-  
+    - vars/main.yml
+
   roles:
     - create-backup

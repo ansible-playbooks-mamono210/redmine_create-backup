@@ -6,7 +6,7 @@
 # RDBMSのデータベースユーザー名
 db_user: redmine
 # RDBMSのデータベースパスワード
-db_password: password 
+db_password: password
 # RDBMSのデータベース名
 db_name: redmine
 
@@ -30,8 +30,11 @@ git_dir: /var/git
 # Git archive data file
 git_archive_file: git.tar.gz
 
-# Redmine media archie data file
+# Redmine media archive data file
 redmine_media_archive_file: files.tar.gz
 
 # PostgreSQL dump data file
 pg_dump_data_file: redmine.psql
+
+# Redmine backup data archive file
+redmine_backup_archive_file: redmine-backup.tar.gz

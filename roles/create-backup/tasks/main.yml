@@ -1,4 +1,4 @@
-- name: Delete working directory 
+- name: Delete working directory
   file:
     path: '{{ backup_data_path }}'
     state: absent
@@ -9,20 +9,26 @@
     recurse: yes
     state: directory
 
-- name: Archive Git repositories 
+- name: Archive Git repositories
   archive:
-    path: '{{ git_dir }}'
-    dest: '{{ backup_data_path }}/{{ git_archive_file }}'
+    path: "{{ git_dir }}"
+    dest: "{{ backup_data_path }}/{{ git_archive_file }}"
     mode: 0755
 
-- name: Archive Redmine media files 
+- name: Archive Redmine media files
   archive:
     path: "{{ redmine_dir }}/files"
-    dest: '{{ backup_data_path }}/{{ redmine_media_archive_file }}'
+    dest: "{{ backup_data_path }}/{{ redmine_media_archive_file }}"
     mode: 0755
 
-- name: Dump Redmine database 
+- name: Dump Redmine database
   environment:
     PGPASSWORD: '{{ db_password }}'
   shell:
     "pg_dump -h localhost -U {{ db_user }} {{ db_name }} > {{ backup_data_path }}/{{ pg_dump_data_file }}"
+
+- name: Archive all data
+  archive:
+    path: '{{ backup_data_path }}'
+    dest: "{{ backup_data_path }}/{{ redmine_backup_archive_file }}"
+    mode: 0755
