@@ -1,35 +1,35 @@
 ---
 - name: Delete working directory
-  file:
+  ansible.builtin.file:
     path: '{{ backup_data_path }}'
     state: absent
 
 - name: Create working directory
-  file:
+  ansible.builtin.file:
     path: '{{ backup_data_path }}'
     recurse: yes
     state: directory
 
 - name: Archive Git repositories
-  archive:
+  ansible.builtin.archive:
     path: "{{ git_dir }}"
     dest: "{{ backup_data_path }}/{{ git_archive_file }}"
     mode: 0755
 
 - name: Archive Redmine media files
-  archive:
+  ansible.builtin.archive:
     path: "{{ redmine_dir }}/files"
     dest: "{{ backup_data_path }}/{{ redmine_media_archive_file }}"
     mode: 0755
 
 - name: Dump Redmine database
+  ansible.builtin.shell:
+    "pg_dump -h localhost -U {{ db_user }} {{ db_name }} > {{ backup_data_path }}/{{ pg_dump_data_file }}"
   environment:
     PGPASSWORD: '{{ db_password }}'
-  shell:
-    "pg_dump -h localhost -U {{ db_user }} {{ db_name }} > {{ backup_data_path }}/{{ pg_dump_data_file }}"
 
 - name: Archive all data
-  archive:
+  ansible.builtin.archive:
     path: '{{ backup_data_path }}'
     dest: "{{ backup_data_path }}/{{ redmine_backup_archive_file }}"
     mode: 0755
