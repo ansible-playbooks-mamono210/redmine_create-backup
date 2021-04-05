@@ -1,3 +1,4 @@
+---
 - name: Delete working directory
   file:
     path: '{{ backup_data_path }}'

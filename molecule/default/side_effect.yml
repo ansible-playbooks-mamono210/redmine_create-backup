@@ -1,0 +1,28 @@
+---
+- hosts: all
+  become: true
+
+  vars:
+    pip_install_packages:
+      - name: pip
+        version: "20.3.4"
+      - name: boto3
+    pip_package: python-pip
+    pip_executable: pip
+    working_dir: /tmp/s3
+
+  roles:
+    - role: geerlingguy.repo-epel
+      become: True
+    - role: geerlingguy.pip
+
+  tasks:
+    - name: Simple PUT operation (To transfer AWS credentials infomations to the target system, do not remove 'aws_access_key', 'aws_secret_key', and 'region')
+      amazon.aws.aws_s3:
+        aws_access_key: '{{ aws_access_key_id }}'
+        aws_secret_key: '{{ aws_secret_access_key }}'
+        region: '{{ aws_region }}'
+        bucket: '{{ s3_bucket }}'
+        object: '{{ s3_object_name }}'
+        src: "{{ working_dir }}/{{ local_file_name }}"
+        mode: put
