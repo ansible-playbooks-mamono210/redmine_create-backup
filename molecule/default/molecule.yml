@@ -17,7 +17,7 @@ provisioner:
     aws_access_key_id: ${AWS_ACCESS_KEY_ID}
     aws_region: ${EC2_REGION}
     aws_secret_access_key: ${AWS_SECRET_ACCESS_KEY}
-    local_file_name: ${AWS_S3_OBJECT_NAME}
+    local_file_name: ${LOCAL_FILE_NAME}
     s3_bucket: ${AWS_S3_BUCKET_NAME}
     s3_object_name: ${AWS_S3_OBJECT_NAME}
   log: true
