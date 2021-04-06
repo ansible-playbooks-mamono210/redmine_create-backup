@@ -2,11 +2,11 @@
 driver:
   name: ec2
 platforms:
-  - name: molecule_redmine_restore_${TIMESTAMP}
+  - name: ${MOLECULE_EC2_TAGS}_${TIMESTAMP}
     image: ${AMI_ID}
     instance_type: t2.medium
-    keypair_name: molecule_redmine_restore_${TIMESTAMP}
-    security_group_name: molecule_redmine_restore_${TIMESTAMP}
+    keypair_name: ${MOLECULE_EC2_TAGS}_${TIMESTAMP}
+    security_group_name: ${MOLECULE_EC2_TAGS}_${TIMESTAMP}
     vpc_subnet_id: ${VPC_SUBNET_ID}
 provisioner:
   name: ansible
