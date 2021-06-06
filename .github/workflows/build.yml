@@ -57,10 +57,8 @@ jobs:
       fail-fast: false
       matrix:
         distro:
-          - centos7
           - centos8
         platform:
-          - redmine
           - redmica
 
     steps:
