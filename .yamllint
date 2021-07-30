@@ -36,6 +36,7 @@ rules:
     ignore: |
        install.yml
        .github/workflows/build.yml
+       molecule/awsiam/converge.yml
        molecule/default/create.yml
        molecule/default/destroy.yml
        molecule/default/side_effect.yml
