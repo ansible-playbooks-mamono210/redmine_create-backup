@@ -31,16 +31,7 @@ rules:
   indentation: enable
   key-duplicates: enable
   key-ordering: disable
-  line-length:
-    level: error
-    ignore: |
-       install.yml
-       .github/workflows/build.yml
-       molecule/awsiam/converge.yml
-       molecule/default/create.yml
-       molecule/default/destroy.yml
-       molecule/default/side_effect.yml
-       roles/create-backup/tasks/main.yml
+  line-length: disable
   new-line-at-end-of-file: enable
   new-lines: enable
   octal-values: disable

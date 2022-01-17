@@ -25,6 +25,7 @@
 - name: Dump Redmine database
   ansible.builtin.shell:
     "pg_dump -h localhost -U {{ db_user }} {{ db_name }} > {{ backup_data_path }}/{{ pg_dump_data_file }}"
+  changed_when: False
   environment:
     PGPASSWORD: '{{ db_password }}'
 
