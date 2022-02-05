@@ -48,7 +48,7 @@ jobs:
       fail-fast: false
       matrix:
         include:
-          - distro: centos8
+          - distro: centos-stream8
             platform: redmica
             python_interpreter: /usr/libexec/platform-python
 
