@@ -1,4 +1,4 @@
 ---
 roles:
-  - name: geerlingguy.repo-epel
+  - name: robertdebock.epel
   - name: geerlingguy.pip

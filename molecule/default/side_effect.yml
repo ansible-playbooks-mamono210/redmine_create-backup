@@ -12,7 +12,7 @@
     working_dir: /tmp/s3
 
   roles:
-    - role: geerlingguy.repo-epel
+    - role: robertdebock.epel
       become: True
     - role: geerlingguy.pip
       vars:
