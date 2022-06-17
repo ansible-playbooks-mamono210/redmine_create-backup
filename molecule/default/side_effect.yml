@@ -12,8 +12,7 @@
     working_dir: /tmp/s3
 
   roles:
-    - role: robertdebock.epel
-      become: True
+    - role: mamono210.epel
     - role: geerlingguy.pip
       vars:
         pip_package: python3-pip
