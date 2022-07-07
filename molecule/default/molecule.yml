@@ -40,6 +40,8 @@ provisioner:
     local_file_name: ${LOCAL_FILE_NAME}
     s3_bucket: ${AWS_S3_BUCKET_NAME}
     s3_object_name: ${AWS_S3_OBJECT_NAME}
+    upload_file_path: "{{ working_dir }}/{{ local_file_name }}"
+    working_dir: /tmp/s3
   log: true
   playbooks:
     converge: ../../create-backup.yml
