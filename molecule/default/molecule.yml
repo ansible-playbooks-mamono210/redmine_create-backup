@@ -31,7 +31,7 @@ provisioner:
   name: ansible
   config_options:
     defaults:
-      callback_whitelist: ansible.posix.profile_tasks
+      callbacks_enabled: ansible.posix.profile_tasks
   connection_options:
     ansible_user: centos
     aws_access_key_id: ${AWS_ACCESS_KEY_ID}
