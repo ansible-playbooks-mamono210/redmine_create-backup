@@ -1,8 +1,13 @@
 ---
-- hosts: all
+- name: Side effect
+  hosts: all
   become: true
 
-  roles:
-    - role: mamono210.epel
-    - role: mamono210.aws_s3_bootstrap
-    - role: mamono210.aws_s3_cp
+  tasks:
+    - name: Load and execute roles
+      ansible.builtin.include_role:
+        name: "{{ item }}"
+      loop:
+        - mamono210.epel
+        - mamono210.aws_s3_bootstrap
+        - mamono210.aws_s3_cp
