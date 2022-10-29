@@ -11,13 +11,13 @@
     state: directory
 
 - name: Archive Git repositories
-  ansible.builtin.archive:
+  community.general.files.archive:
     path: "{{ git_dir }}"
     dest: "{{ backup_data_path }}/{{ git_archive_file }}"
     mode: 0755
 
 - name: Archive Redmine media files
-  ansible.builtin.archive:
+  community.general.files.archive:
     path: "{{ redmine_dir }}/files"
     dest: "{{ backup_data_path }}/{{ redmine_media_archive_file }}"
     mode: 0755
@@ -30,7 +30,7 @@
     PGPASSWORD: '{{ db_password }}'
 
 - name: Archive all data
-  ansible.builtin.archive:
+  community.general.files.archive:
     path: '{{ backup_data_path }}'
     dest: "{{ backup_data_path }}/{{ redmine_backup_archive_file }}"
     mode: 0755
