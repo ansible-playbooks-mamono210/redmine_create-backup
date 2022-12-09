@@ -75,10 +75,6 @@ jobs:
             echo "export TAG_NAME=${VALUE}_${TIMESTAMP}" >> $BASH_ENV
             source $BASH_ENV
       - run:
-          name: Install required Ansible roles
-          command: |
-            ansible-galaxy install -r molecule/default/requirements.yml
-      - run:
           name: Test with molecule
           command: |
             echo "export AWS_S3_BUCKET_NAME=${AWS_S3_BUCKET_NAME}-molecule" >> $BASH_ENV
