@@ -18,8 +18,7 @@ jobs:
     executor: ansible-lint/default
     steps:
       - checkout
-      - ansible-lint/execute:
-          molecule-playbook-test: true
+      - ansible-lint/execute
   molecule-ec2:
     executor: molecule-ec2/default
     steps:
