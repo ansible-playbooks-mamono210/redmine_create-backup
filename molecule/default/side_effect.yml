@@ -9,5 +9,5 @@
         name: "{{ item }}"
       loop:
         - mamono210.epel
-        - mamono210.aws_s3_bootstrap
+        - mamono210.aws_bootstrap
         - mamono210.aws_s3_cp
