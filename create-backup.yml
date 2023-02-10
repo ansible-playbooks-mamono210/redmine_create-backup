@@ -1,5 +1,6 @@
 ---
-- hosts: all
+- name: Create Redmine backup data
+  hosts: all
   become: true
 
   roles:
