@@ -4,11 +4,11 @@
 # 適宜変更する
 #----------------------------------------
 # RDBMSのデータベースユーザー名
-db_user: redmine
+redmine_db_user: redmine
 # RDBMSのデータベースパスワード
-db_password: password
+redmine_db_password: password
 # RDBMSのデータベース名
-db_name: redmine
+redmine_db_name: redmine
 
 # 将来的に実装予定
 # RDBMSの稼働するマシンのホスト名
@@ -19,22 +19,22 @@ db_name: redmine
 #----------------------------------------
 
 # Backup data path
-backup_data_path: /tmp/redmine-backup
+redmine_backup_data_dir: /tmp/redmine-backup
 
 # Redmine Directory
 redmine_dir: /var/lib/redmine
 
 # Git Directory
-git_dir: /var/git
+redmine_git_dir: /var/git
 
 # Git archive data file
-git_archive_file: git.tar.gz
+redmine_archived_git_file: git.tar.gz
 
 # Redmine media archive data file
-redmine_media_archive_file: files.tar.gz
+redmine_archived_media_file: files.tar.gz
 
 # PostgreSQL dump data file
-pg_dump_data_file: redmine.psql
+redmine_pg_dump_file: redmine.psql
 
 # Redmine backup data archive file
 redmine_backup_archive_file: redmine-backup.tar.gz
