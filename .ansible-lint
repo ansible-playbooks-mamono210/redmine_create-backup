@@ -1,7 +1,2 @@
 ---
 parseable: true
-warn_list:
-  - experimental
-  - fqcn-builtins
-  - role-name
-  - schema

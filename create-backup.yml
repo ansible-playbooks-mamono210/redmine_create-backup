@@ -4,4 +4,6 @@
   become: true
 
   roles:
-    - create-backup
+    - mamono210.redmine_backup_files
+    - mamono210.redmine_backup_git
+    - mamono210.redmine_backup_postgresql

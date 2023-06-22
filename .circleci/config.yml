@@ -28,13 +28,6 @@ jobs:
           role-arn: ${AWS_ROLE_ARN}
           role-session-name: molecule_redmine_create-backup
           session-duration: '3600'
-      - run:
-          name: Set required environment variables
-          command: |
-            echo "export AWS_S3_BUCKET_NAME=${AWS_S3_BUCKET_NAME}-molecule" >> $BASH_ENV
-            echo "export AWS_S3_OBJECT_NAME=redmica/centos-stream8/${AWS_S3_OBJECT_NAME}" >> $BASH_ENV
-            echo "export LOCAL_FILE_NAME=${AWS_S3_OBJECT_NAME}" >> $BASH_ENV
-            source $BASH_ENV
       - molecule-ec2/execute:
           aws-ami-name: "redmica_restore_centos-stream8*"
           aws-ami-owner-id: "808683561341"

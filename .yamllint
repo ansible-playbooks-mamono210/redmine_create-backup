@@ -8,13 +8,10 @@ extends: default
 
 ignore: |
   README.md
-  roles/create-backup/defaults/main.yml
 
 rules:
   braces:
     level: error
-    ignore: |
-      molecule/default/create.yml
   brackets: enable
   colons: enable
   commas: enable

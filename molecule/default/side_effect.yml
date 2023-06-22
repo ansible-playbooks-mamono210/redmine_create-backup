@@ -4,10 +4,34 @@
   become: true
 
   tasks:
-    - name: Load and execute roles
+    - name: Install EPEL
       ansible.builtin.include_role:
-        name: "{{ item }}"
-      loop:
-        - mamono210.epel
-        - mamono210.aws_bootstrap
-        - mamono210.aws_s3_cp
+        name: mamono210.epel
+
+    - name: Install boto3
+      ansible.builtin.include_role:
+        name: mamono210.aws_bootstrap
+
+    - name: Copy archived Git data file to S3
+      ansible.builtin.include_role:
+        name: mamono210.aws_s3_cp
+      vars:
+        s3_bucket: mamono210
+        s3_object_name: "ansible-playbooks-mamono210/redmine_create-backup/{{ redmine_archived_git_file }}"
+        upload_file_path: "{{ redmine_backup_data_dir }}/{{ redmine_archived_git_file }}"
+
+    - name: Copy archived media file to S3
+      ansible.builtin.include_role:
+        name: mamono210.aws_s3_cp
+      vars:
+        s3_bucket: mamono210
+        s3_object_name: "ansible-playbooks-mamono210/redmine_create-backup/{{ redmine_archived_media_file }}"
+        upload_file_path: "{{ redmine_backup_data_dir }}/{{ redmine_archived_media_file }}"
+
+    - name: Copy archived PostgreSQL dumped data file to S3
+      ansible.builtin.include_role:
+        name: mamono210.aws_s3_cp
+      vars:
+        s3_bucket: mamono210
+        s3_object_name: "ansible-playbooks-mamono210/redmine_create-backup/{{ redmine_archived_pg_dump_file }}"
+        upload_file_path: "{{ redmine_backup_data_dir }}/{{ redmine_archived_pg_dump_file }}"

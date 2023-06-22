@@ -1,18 +1,19 @@
 # Redmine create backup data vars
 
-#----------------------------------------
-# 適宜変更する
-#----------------------------------------
-# RDBMSのデータベースユーザー名
-redmine_db_user: redmine
-# RDBMSのデータベースパスワード
+# Host running the database
+redmine_db_host: localhost
+
+# The password to establish the PostgreSQL session
 redmine_db_password: password
-# RDBMSのデータベース名
+
+# Redmine database name
 redmine_db_name: redmine
 
+# The user name to establish the PostgreSQL session
+redmine_db_user: redmine
+
+#----------------------------------------
 # 将来的に実装予定
-# RDBMSの稼働するマシンのホスト名
-# db_host: localhost
 #
 # RDBMSの稼働するするマシンの接続ポート番号
 # db_port: 5432
@@ -21,20 +22,20 @@ redmine_db_name: redmine
 # Backup data path
 redmine_backup_data_dir: /tmp/redmine-backup
 
-# Redmine Directory
-redmine_dir: /var/lib/redmine
+# Archived Git data file
+redmine_archived_git_file: git.tar.gz
 
 # Git Directory
 redmine_git_dir: /var/git
 
-# Git archive data file
-redmine_archived_git_file: git.tar.gz
-
-# Redmine media archive data file
+# Archived Redmine media file
 redmine_archived_media_file: files.tar.gz
 
-# PostgreSQL dump data file
-redmine_pg_dump_file: redmine.psql
+# Redmine media file directory
+redmine_file_dir: /var/lib/redmine/files
 
-# Redmine backup data archive file
-redmine_backup_archive_file: redmine-backup.tar.gz
+# Archived PostgreSQL dumped data file
+redmine_archived_pg_dump_file: redmine.psql.tar.gz
+
+# PostgreSQL dumped data file name
+redmine_pg_dump_file: redmine.psql

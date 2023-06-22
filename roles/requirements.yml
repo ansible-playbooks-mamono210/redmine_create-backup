@@ -1,0 +1,8 @@
+---
+roles:
+  - name: mamono210.redmine_backup_files
+    src: https://github.com/ansible-roles-mamono210/redmine_backup_files.git
+  - name: mamono210.redmine_backup_git
+    src: https://github.com/ansible-roles-mamono210/redmine_backup_git.git
+  - name: mamono210.redmine_backup_postgresql
+    src: https://github.com/ansible-roles-mamono210/redmine_backup_postgresql.git
