@@ -34,5 +34,5 @@ redmine_archived_media_file: files.tar.gz
 # Redmine media file directory
 redmine_file_dir: /var/lib/redmine/files
 
-# Archived PostgreSQL dumped data file
-redmine_archived_pg_dump_file: redmine.psql.tar.gz
+# PostgreSQL dumped data file
+redmine_pg_dump_file: redmine.psql
