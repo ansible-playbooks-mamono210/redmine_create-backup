@@ -10,7 +10,7 @@ executors:
 orbs:
   ansible-lint: orbss/ansible-lint@0.0.3
   aws-cli: circleci/aws-cli@3.1.1
-  molecule-ec2: orbss/molecule-ec2@0.0.4
+  molecule-ec2: orbss/molecule-ec2@0.0.8
   yamllint: orbss/yamllint@0.0.4
 
 jobs:
@@ -21,23 +21,39 @@ jobs:
       - ansible-lint/execute
   molecule-ec2:
     executor: molecule-ec2/default
+    parameters:
+      ansible-user:
+        type: string
+      aws-ami-name:
+        type: string
+      aws-ami-owner-id:
+        type: string
+      aws-instance-type:
+        type: string
+      aws-resource-name:
+        type: string
+      aws-vpc-subnet-id:
+        type: string
+      circleci-timeout:
+        type: string
+      molecule-scenario-name:
+        type: string
     steps:
       - checkout
       - aws-cli/setup:
           profile-name: default
           role-arn: ${AWS_ROLE_ARN}
-          role-session-name: molecule_redmine_create-backup
-          session-duration: '3600'
+          role-session-name: << parameters.aws-resource-name >>
+          session-duration: '2100'
       - molecule-ec2/execute:
-          aws-ami-name: "redmica_restore_centos-stream8*"
-          aws-ami-owner-id: "808683561341"
-          aws-resource-name: "molecule_redmine_create-backup"
-          aws-vpc-subnet-id: "subnet-022a704b3061b8b39"
-          circleci-timeout: "15m"
-        environment:
-        # AWS_S3_BUCKET_NAME: stored in system environment variables
-        # AWS_S3_OBJECT_NAME: stored in system environment variables
-        # LOCAL_FILE_NAME: stored in system environment variables
+          ansible-user: << parameters.ansible-user >>
+          aws-ami-name: << parameters.aws-ami-name >>
+          aws-ami-owner-id: << parameters.aws-ami-owner-id >>
+          aws-instance-type: << parameters.aws-instance-type >>
+          aws-resource-name: << parameters.aws-resource-name >>
+          aws-vpc-subnet-id: << parameters.aws-vpc-subnet-id >>
+          circleci-timeout: << parameters.circleci-timeout >>
+          molecule-scenario-name: << parameters.molecule-scenario-name >>
   yamllint:
     executor: yamllint/default
     steps:
@@ -63,6 +79,14 @@ workflows:
           requires:
             - yamllint
       - molecule-ec2:
+          ansible-user: centos
+          aws-ami-name: 'redmica_restore_centos-stream8*'
+          aws-ami-owner-id: '808683561341'
+          aws-instance-type: 't2.medium'
+          aws-resource-name: 'circleci_ansible-playbook_redmine_create-backup_centos-stream8'
+          aws-vpc-subnet-id: 'subnet-022a704b3061b8b39'
+          circleci-timeout: '20m'
+          molecule-scenario-name: 'default'
           context: AWS_OPENID_CONNECT_TOKENS
           requires:
             - ansible-lint
