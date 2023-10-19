@@ -29,7 +29,6 @@ provisioner:
   config_options:
     defaults:
       callbacks_enabled: ansible.posix.profile_tasks
-      timeout: 300
       verbosity: 0
   connection_options:
     ansible_user: centos
