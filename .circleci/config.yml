@@ -83,7 +83,7 @@ workflows:
           aws-ami-name: 'redmica_restore_centos-stream8*'
           aws-ami-owner-id: '808683561341'
           aws-instance-type: 't2.medium'
-          aws-resource-name: 'circleci_ansible-playbook_redmine_create-backup_centos-stream8'
+          aws-resource-name: 'circleci_ansible-playbook_redmine_create-backup_cs8'
           aws-vpc-subnet-id: 'subnet-022a704b3061b8b39'
           circleci-timeout: '20m'
           molecule-scenario-name: 'default'
