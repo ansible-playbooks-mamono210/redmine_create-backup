@@ -3,11 +3,11 @@
 # Host running the database
 redmine_db_host: localhost
 
-# The password to establish the PostgreSQL session
-redmine_db_password: password
-
 # Redmine database name
 redmine_db_name: redmine
+
+# The password to establish the PostgreSQL session
+redmine_db_password: password
 
 # The user name to establish the PostgreSQL session
 redmine_db_user: redmine
@@ -19,7 +19,7 @@ redmine_db_user: redmine
 # db_port: 5432
 #----------------------------------------
 
-# Backup data path
+# Backup data directory
 redmine_backup_data_dir: /tmp/redmine-backup
 
 # Archived Git data file
@@ -35,4 +35,4 @@ redmine_archived_media_file: files.tar.gz
 redmine_file_dir: /var/lib/redmine/files
 
 # PostgreSQL dumped data file
-redmine_pg_dump_file: redmine.psql
+redmine_pg_dump_file: redmine.sql
