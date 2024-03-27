@@ -46,8 +46,6 @@ provisioner:
   env:
     MOLECULE_DEBUG: true
   log: true
-  playbooks:
-    converge: ../../create-backup.yml
 verifier:
   name: ansible
 scenario:
