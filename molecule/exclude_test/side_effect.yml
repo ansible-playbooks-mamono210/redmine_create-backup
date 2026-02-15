@@ -17,7 +17,7 @@
         name: mamono210.aws_s3_cp
       vars:
         s3_bucket: mamono210
-        s3_object_name: "ansible-playbooks-mamono210/redmine_create-backup/default/{{ redmine_archived_git_file }}"
+        s3_object_name: "ansible-playbooks-mamono210/redmine_create-backup/exclude_test/{{ redmine_archived_git_file }}"
         upload_file_path: "{{ redmine_backup_data_dir }}/{{ redmine_archived_git_file }}"
 
     - name: Copy archived media file to S3
@@ -25,7 +25,7 @@
         name: mamono210.aws_s3_cp
       vars:
         s3_bucket: mamono210
-        s3_object_name: "ansible-playbooks-mamono210/redmine_create-backup/default/{{ redmine_archived_media_file }}"
+        s3_object_name: "ansible-playbooks-mamono210/redmine_create-backup/exclude_test/{{ redmine_archived_media_file }}"
         upload_file_path: "{{ redmine_backup_data_dir }}/{{ redmine_archived_media_file }}"
 
     - name: Copy PostgreSQL dumped data file to S3
@@ -33,5 +33,5 @@
         name: mamono210.aws_s3_cp
       vars:
         s3_bucket: mamono210
-        s3_object_name: "ansible-playbooks-mamono210/redmine_create-backup/default/{{ redmine_pg_dump_file }}"
+        s3_object_name: "ansible-playbooks-mamono210/redmine_create-backup/exclude_test/{{ redmine_pg_dump_file }}"
         upload_file_path: "{{ redmine_backup_data_dir }}/{{ redmine_pg_dump_file }}"

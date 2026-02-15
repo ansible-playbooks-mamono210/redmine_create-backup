@@ -42,7 +42,8 @@ provisioner:
     redmine_backup_data_dir: /tmp/redmine-backup
     redmine_git_exclude_dirs: []
     redmine_git_include_dirs:
-      - /var/git
+      - /var/git/ansible
+      - /var/git/aws
     redmine_pg_dump_file: redmine.sql
   env:
     MOLECULE_DEBUG: true

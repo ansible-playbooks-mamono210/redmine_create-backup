@@ -88,11 +88,37 @@ workflows:
           aws-ami-name: 'redmica_restore_centos-stream9*'
           aws-ami-owner-id: '808683561341'
           aws-instance-type: 't2.medium'
-          aws-resource-name: 'circleci_ansible-playbook_rm_create-backup_cs9'
+          aws-resource-name: 'circleci_ansible-playbook_rm_create-backup_cs9_df'
           aws-session-duration: '3600'
           aws-vpc-subnet-id: 'subnet-022a704b3061b8b39'
           circleci-timeout: '40m'
           molecule-scenario-name: 'default'
+          context: AWS_OPENID_CONNECT_TOKENS
+          requires:
+            - ansible-lint
+      - molecule-ec2:
+          ansible-user: 'ec2-user'
+          aws-ami-name: 'redmica_restore_centos-stream9*'
+          aws-ami-owner-id: '808683561341'
+          aws-instance-type: 't2.medium'
+          aws-resource-name: 'circleci_ansible-playbook_rm_create-backup_cs9_ex'
+          aws-session-duration: '3600'
+          aws-vpc-subnet-id: 'subnet-022a704b3061b8b39'
+          circleci-timeout: '40m'
+          molecule-scenario-name: 'exclude_test'
+          context: AWS_OPENID_CONNECT_TOKENS
+          requires:
+            - ansible-lint
+      - molecule-ec2:
+          ansible-user: 'ec2-user'
+          aws-ami-name: 'redmica_restore_centos-stream9*'
+          aws-ami-owner-id: '808683561341'
+          aws-instance-type: 't2.medium'
+          aws-resource-name: 'circleci_ansible-playbook_rm_create-backup_cs9_in'
+          aws-session-duration: '3600'
+          aws-vpc-subnet-id: 'subnet-022a704b3061b8b39'
+          circleci-timeout: '40m'
+          molecule-scenario-name: 'include_test'
           context: AWS_OPENID_CONNECT_TOKENS
           requires:
             - ansible-lint
