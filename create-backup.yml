@@ -4,7 +4,18 @@
   become: true
 
   roles:
-    - mamono210.redmine_backup_files
-    - mamono210.redmine_backup_git
-    - mamono210.redmine_backup_postgresql
-    - mamono210.redmine_facts
+    - role: mamono210.redmine_backup_files
+      tags:
+        - backup_files
+
+    - role: mamono210.redmine_backup_git
+      tags:
+        - backup_git
+
+    - role: mamono210.redmine_backup_postgresql
+      tags:
+        - backup_postgresql
+
+    - role: mamono210.redmine_facts
+      tags:
+        - facts
